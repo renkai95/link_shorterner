@@ -1,5 +1,6 @@
 import os
 from sanic import Sanic
+from sanic import response
 from sanic.response import json,redirect
 import mysql.connector
 from link_generator import generator
@@ -8,6 +9,12 @@ from time import sleep
 app = Sanic(name='Link Shorterner')
 
 base_path = os.environ["SERVER_ADDR"]
+
+@app.route('/')
+def index(request):
+   return response.file('./frontend_page/home.html')
+
+
 
 @app.route("/link/",methods=["POST"])
 def link_shortener(req):
@@ -18,7 +25,7 @@ def link_shortener(req):
     if req.method == "POST":
         try:
 
-            link = req.args["link"][0]
+            link = req.form.get('link')
             shortened_link = generator(link)
             cursor.execute("INSERT INTO data(`shortened_link`,`link`) VALUES(%s, %s)", (shortened_link, link))
             cnx.commit()
@@ -37,10 +44,12 @@ def link_redirect(req,link):
     '''
     try:
         cursor.execute("SELECT `link` from `data` WHERE `shortened_link` = %s", (link,))
-        res = cursor.fetchone()[0]
-        if res:
-            print(res)
-            return redirect(res)
+        res = cursor.fetchone()
+        if res is not None or link is not None:
+            print(res[0])
+            return redirect(res[0])
+        else:
+            return json({"success":False,"error":"Link is not found"})
     except Exception as e:
         return json({"success":False,"error":e})
 
