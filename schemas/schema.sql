@@ -1,5 +1,5 @@
 CREATE TABLE `data` (
-  `key` varchar(64) NOT NULL,
-  `value` varchar(64),
-  PRIMARY KEY (`key`)
+  `shortened_link` varchar(64) NOT NULL,
+  `link` varchar(64),
+  PRIMARY KEY (`shortened_link`)
 ) ENGINE=InnoDB;

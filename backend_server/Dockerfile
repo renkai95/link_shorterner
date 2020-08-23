@@ -1,9 +1,9 @@
-FROM 3.8.5-alpine3.12
+FROM sanicframework/sanic:LTS
 
 
 COPY . /link_shorterner 
 
 WORKDIR /link_shorterner
 
-RUN pip3 install -r requirements.txt
+RUN python3 -m pip install -r requirements.txt 
 
