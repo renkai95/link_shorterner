@@ -22,7 +22,7 @@ def link_shortener(req):
             shortened_link = generator(link)
             cursor.execute("INSERT INTO data(`shortened_link`,`link`) VALUES(%s, %s)", (shortened_link, link))
             cnx.commit()
-            return json({"success":True,"link":"/".join(base_path,shortened_link)})
+            return json({"success":True,"link":base_path+ '/' +shortened_link})
 
         except Exception as e:
             return json({"success":False,"error":e})

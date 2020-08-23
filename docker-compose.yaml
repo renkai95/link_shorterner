@@ -67,8 +67,6 @@ volumes:
 networks:
   backend-subnet:
     driver: bridge
-    driver_opts:
-        com.docker.network.enable_ipv6: "true"
     ipam:
         driver: default
         config:
