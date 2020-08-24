@@ -26,7 +26,6 @@ services:
       - ./default.conf:/etc/nginx/nginx.conf
     ports:
       - "80:80"
-      - "443:443"
     environment:
       - NGINX_HOST=yeet.me.com
       - NGINX_PORT=80
