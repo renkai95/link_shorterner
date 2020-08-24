@@ -4,10 +4,6 @@ services:
 
   db:
     image: mysql
-    ports:
-    - "3306:3306"
-    expose:
-      - '3306'
     environment:
       - MYSQL_ROOT_PASSWORD=password
       - MYSQL_USER=user
@@ -29,7 +25,7 @@ services:
     volumes:
       - ./default.conf:/etc/nginx/nginx.conf
     ports:
-      - "80:27015"
+      - "80:80"
       - "443:443"
     environment:
       - NGINX_HOST=yeet.me.com
@@ -57,8 +53,6 @@ services:
       backend-subnet:
             ipv4_address: 10.128.0.10
 
-    ports:
-        - 27015:27015
 
 
 volumes:
