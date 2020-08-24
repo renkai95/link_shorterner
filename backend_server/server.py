@@ -45,7 +45,7 @@ def link_redirect(req,link):
     try:
         cursor.execute("SELECT `link` from `data` WHERE `shortened_link` = %s", (link,))
         res = cursor.fetchone()
-        if res is not None or link is not None:
+        if res is not None and link is not None:
             print(res[0])
             return redirect(res[0])
         else:
