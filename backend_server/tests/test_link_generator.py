@@ -11,7 +11,7 @@ class TestShortener():
         Happy case to check if the result is generated properly with a fixed salt
         '''
         res = generator("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
-        assert res == '0fe5af9c'
+        assert res == '0fe5af9'
 
     def testFailedHashing(self):
         '''
