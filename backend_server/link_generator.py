@@ -9,5 +9,11 @@ def generator(link):
     
 
     '''
-    newString = link + str(datetime.now())
-    return md5(newString.encode()).hexdigest()[0:8]
+    if type(link) == str:
+        newString = link + str(getTime())
+        return md5(newString.encode()).hexdigest()[0:8]
+    else:
+        raise TypeError
+
+def getTime():
+    return datetime.now()
