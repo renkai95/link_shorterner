@@ -13,9 +13,14 @@ Intro:
 
   ```make start``` to bring the containers up
 
+ Call ```172.16.238.20:80``` to get a simple frontend text box to enter the link
 
- Call ```172.16.238.20:80/link?link=yourlinkhere.com``` to generate the link
+ Call ```172.16.238.20:80/<generated_link>``` to get the link redirect
 
 
-  Call ```172.16.238.20:80/<generated_link>``` to get the link redirect
 
+  ```make stop``` to stop the containers
+
+  ```make clean``` to clear all images and remove any existing networks
+
+   ```make test``` to run unit tests
