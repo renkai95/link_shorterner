@@ -2,4 +2,4 @@ steps:
     - name: 'docker/compose:1.19.0'
       args: ['up', '-d']
     - name: 'gcr.io/cloud-builders/docker'
-      args: ['push', 'gcr.io/[PROJECT_ID]/[IMAGE_NAME]']
+      args: ['push', 'gcr.io/$PROJECT_ID/$REPO_NAME']
